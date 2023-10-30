@@ -5,12 +5,11 @@ use warnings;
 
 use Joplin;
 
-my $find = $ARGV[0];
-my %links;
-
-find_link($find);
+find_link(@ARGV);
 
 sub find_link {
+    my $find = join(' ', @ARGV);
+
     my $tmpl = '"title":"%s","subtitle":"%s","arg":"%s"';
 
     my $data = Joplin::get_data(["search"], { "query" => $find });
