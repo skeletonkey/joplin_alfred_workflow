@@ -83,7 +83,7 @@
 				<key>script</key>
 				<string>query=$*
 
-perl search_notes.pl "$query" 2&gt;&amp;1</string>
+perl search_notes.pl $query 2&gt;&amp;1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -116,16 +116,16 @@ Report issues here: https://github.com/skeletonkey/joplin_alfred_workflow/issues
 			<key>note</key>
 			<string>Please submit issues and feature requests at https://github.com/skeletonkey/joplin_alfred_workflow/issues</string>
 			<key>xpos</key>
-			<real>220</real>
+			<real>370</real>
 			<key>ypos</key>
-			<real>180</real>
+			<real>200</real>
 		</dict>
 		<key>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</key>
 		<dict>
 			<key>xpos</key>
-			<real>455</real>
+			<real>655</real>
 			<key>ypos</key>
-			<real>180</real>
+			<real>200</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
