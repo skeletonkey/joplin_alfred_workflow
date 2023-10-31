@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string></string>
+	<string>com.github/skeletonkey/joplin_alfred_workflow</string>
 	<key>category</key>
 	<string>Productivity</string>
 	<key>connections</key>
@@ -142,7 +142,7 @@ Report issues here: https://github.com/skeletonkey/joplin_alfred_workflow/issues
 		<string>JOPLIN_TOKEN</string>
 	</array>
 	<key>version</key>
-	<string>0.0.1</string>
+	<string>0.0.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/skeletonkey/joplin_alfred_workflow</string>
 </dict>

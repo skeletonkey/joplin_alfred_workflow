@@ -25,4 +25,15 @@ sub get_data {
     return decode_json($resp);
 }
 
+sub parse_error {
+    my $data = shift || warn("parse_error called without data\n");
+
+    warn("no error element found in data\n") unless exists $data->{error};
+
+    my @lines = split(/\n/, $data->{error});
+    $lines[0] =~ s/"/'/g;
+
+    return $lines[0];
+}
+
 1;

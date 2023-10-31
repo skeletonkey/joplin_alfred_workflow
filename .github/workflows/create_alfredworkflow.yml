@@ -18,11 +18,11 @@ jobs:
       uses: thedoctor0/zip-release@main
       with:
         type: 'zip'
-        filename: 'link-opener.alfredworkflow'
+        filename: 'joplin.alfredworkflow'
         exclusions: '*.git*'
     - uses: actions/upload-artifact@main
       with:
-        name: link-opener.alfredworkflow
-        path: link-opener.alfredworkflow
+        name: joplin.alfredworkflow
+        path: joplin.alfredworkflow
 
 
