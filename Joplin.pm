@@ -11,9 +11,6 @@ sub get_data {
     my $query_map = shift || {};
 
     $query_map->{token} = $ENV{JOPLIN_TOKEN};
-    $query_map->{fields} = 'id,title';
-    $query_map->{limit} = 9;
-    $query_map->{order_by} = "updated_time";
 
     my $url = join("/", $ENV{JOPLIN_URL}, @$url_parts);
     if ($query_map) {

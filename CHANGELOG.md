@@ -1,8 +1,9 @@
 # Changelog
 
-## 0.0.1
+## 0.0.3
 
-- add `js` search
+- CHANGELOG.md order change
+- use Jundy::AlfredWorkflow::Filter::display
 
 ## 0.0.2
 
@@ -10,3 +11,7 @@
 - add CHANGELOG.md
 - some error handling to provide feedback to user
 - misc code clean up to standardize naming
+
+## 0.0.1
+
+- add `js` search
