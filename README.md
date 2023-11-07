@@ -59,6 +59,12 @@ cpan install JSON
 
 ### Search
 
+#### jn <folder>
+
+Create a new note and open it in the specified folder.
+
+Currently only an empty note (no title, no body) is created.  [Issue #9](https://github.com/skeletonkey/joplin_alfred_workflow/issues/9) has been created to address this shortcoming.
+
 #### js <search words>
 
 Search all of Joplin for the string entered.
