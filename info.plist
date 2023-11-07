@@ -8,11 +8,37 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
+		<key>305C4FC4-16E8-40CA-9742-E7CD7C269C37</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>49E47331-FA4F-4C25-BB08-BB344B51A6D7</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D7C5E8DE-9100-473F-86E2-CF04F3D99F60</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>305C4FC4-16E8-40CA-9742-E7CD7C269C37</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -32,27 +58,6 @@
 	<string>Joplin</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>joplin://x-callback-url/openNote?id={query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -104,6 +109,103 @@ perl search_notes.pl $query 2&gt;&amp;1</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>joplin://x-callback-url/openNote?id={query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+
+perl create_note.pl $query</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>305C4FC4-16E8-40CA-9742-E7CD7C269C37</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>jn</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>query=$1
+
+perl find_folder.pl $query 2&gt;&amp;1</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>&lt;folder name&gt; Titel of note</string>
+				<key>title</key>
+				<string>Create a new note</string>
+				<key>type</key>
+				<integer>11</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>D7C5E8DE-9100-473F-86E2-CF04F3D99F60</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Source Code: https://github.com/skeletonkey/joplin_alfred_workflow
@@ -111,21 +213,37 @@ perl search_notes.pl $query 2&gt;&amp;1</string>
 Report issues here: https://github.com/skeletonkey/joplin_alfred_workflow/issues</string>
 	<key>uidata</key>
 	<dict>
+		<key>305C4FC4-16E8-40CA-9742-E7CD7C269C37</key>
+		<dict>
+			<key>xpos</key>
+			<real>285</real>
+			<key>ypos</key>
+			<real>255</real>
+		</dict>
 		<key>49E47331-FA4F-4C25-BB08-BB344B51A6D7</key>
 		<dict>
 			<key>note</key>
 			<string>Please submit issues and feature requests at https://github.com/skeletonkey/joplin_alfred_workflow/issues</string>
 			<key>xpos</key>
-			<real>370</real>
+			<real>30</real>
 			<key>ypos</key>
-			<real>200</real>
+			<real>15</real>
 		</dict>
 		<key>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</key>
 		<dict>
 			<key>xpos</key>
-			<real>655</real>
+			<real>535</real>
 			<key>ypos</key>
-			<real>200</real>
+			<real>15</real>
+		</dict>
+		<key>D7C5E8DE-9100-473F-86E2-CF04F3D99F60</key>
+		<dict>
+			<key>note</key>
+			<string>Create New Note in specific folder.</string>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>255</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -142,7 +260,7 @@ Report issues here: https://github.com/skeletonkey/joplin_alfred_workflow/issues
 		<string>JOPLIN_TOKEN</string>
 	</array>
 	<key>version</key>
-	<string>0.0.2</string>
+	<string>0.0.3</string>
 	<key>webaddress</key>
 	<string>https://github.com/skeletonkey/joplin_alfred_workflow</string>
 </dict>

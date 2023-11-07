@@ -4,6 +4,7 @@
 
 - CHANGELOG.md order change
 - use Jundy::AlfredWorkflow::Filter::display
+- jn - create new note (no title or body)
 
 ## 0.0.2
 
