@@ -19,7 +19,7 @@ sub get_data {
     }
 
     my $resp = `curl -s -q "$url"`;
-    return decode_json($resp);
+    return _response($resp);
 }
 
 sub post_data {
@@ -38,7 +38,7 @@ sub post_data {
     my $body = encode_json($body_map);
 
     my $resp = `curl -X POST -s -q --data '$body' "$url"`;
-    return decode_json($resp);
+    return _response($resp);
 }
 
 sub parse_error {
@@ -50,6 +50,11 @@ sub parse_error {
     $lines[0] =~ s/"/'/g;
 
     return $lines[0];
+}
+
+sub _response {
+    my $resp = shift || return { data => [], error => "No response from Joplin - make sure Joplin is running" };
+    return decode_json($resp);
 }
 
 1;
