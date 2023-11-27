@@ -7,8 +7,6 @@ use vars qw($t);
 use Joplin;
 use Jundy::AlfredWorkflow::Filter;
 
-use Erik qw(log);
-
 $t ||= 0; # search titles only
 
 my $find = join(' ', @ARGV);
@@ -18,7 +16,6 @@ my $data = Joplin::get_data(
     # { fields => 'id,title', limit => 9, order_by => "updated_time", query => $find, }
     { fields => 'id,title', order_by => "updated_time", query => $find, }
 );
-Erik::dump(data => $data);
 
 my %display_data = (
     data  => [],
