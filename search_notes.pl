@@ -13,7 +13,6 @@ my $find = join(' ', @ARGV);
 
 my $data = Joplin::get_data(
     ["search"],
-    # { fields => 'id,title', limit => 9, order_by => "updated_time", query => $find, }
     { fields => 'id,title', order_by => "updated_time", query => $find, }
 );
 
