@@ -1,16 +1,19 @@
-#!/usr/bin/perl -I .
+#!/usr/bin/perl -I . -s
 
 use strict;
 use warnings;
+use vars qw($t);
 
 use Joplin;
 use Jundy::AlfredWorkflow::Filter;
+
+$t ||= 0; # search titles only
 
 my $find = join(' ', @ARGV);
 
 my $data = Joplin::get_data(
     ["search"],
-    { fields => 'id,title', limit => 9, order_by => "updated_time", query => $find, }
+    { fields => 'id,title', order_by => "updated_time", query => $find, }
 );
 
 my %display_data = (
@@ -19,6 +22,9 @@ my %display_data = (
 );
 if (exists $data->{items} && @{$data->{items}}) {
     my @items = @{$data->{items}};
+    if ($t) { # search only titles
+        @items = grep { $_->{title} =~ /$find/i } @items;
+    }
     map { push(@{$display_data{data}}, { title => $_->{title}, subtitle => $_{title}, arg => $_->{id} }) } @items;
 }
 elsif (exists $data->{error}) {
