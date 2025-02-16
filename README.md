@@ -61,9 +61,9 @@ cpan install JSON
 
 #### jn _folder_
 
-Create a new note and open it in the specified folder.
+Create a new note, in a specific folder with a specified name.
 
-Only an empty note (no title, no body) is created. [Issue #9](https://github.com/skeletonkey/joplin_alfred_workflow/issues/9) has been created to address this shortcoming.
+Type `jn` to select a folder, then enter the note title and press Enter to create it.
 
 ### Search
 
@@ -71,12 +71,12 @@ Only an empty note (no title, no body) is created. [Issue #9](https://github.com
 
 Search all of Joplin for the string entered.
 
-*NOTE:* Joplin search operates on 'Words'; therefore, partial strings may not return what you expect.
+_NOTE:_ Joplin search operates on 'Words'; therefore, partial strings may not return what you expect.
 
-*BUG* currently, words separated with a space are treated as two tokens with an AND operation instead of one string.
+_BUG_ currently, words separated with a space are treated as two tokens with an AND operation instead of one string.
 
 #### jt _search words_
 
 Search Joplin Note Titles for the string entered.
 
-*NOTE:* Joplin search operates on 'Words'; therefore, partial strings may not return what you expect.
+_NOTE:_ Joplin search operates on 'Words'; therefore, partial strings may not return what you expect.
