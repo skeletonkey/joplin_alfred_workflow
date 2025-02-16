@@ -4,8 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.github/skeletonkey/joplin_alfred_workflow</string>
-	<key>category</key>
-	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>305C4FC4-16E8-40CA-9742-E7CD7C269C37</key>
@@ -47,11 +45,37 @@
 				<false/>
 			</dict>
 		</array>
-		<key>D7C5E8DE-9100-473F-86E2-CF04F3D99F60</key>
+		<key>7CFC5178-3B64-4F64-9927-744A9F998B57</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>305C4FC4-16E8-40CA-9742-E7CD7C269C37</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A5F8CA84-B79D-4BC3-8DE9-146C61615B7E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7CFC5178-3B64-4F64-9927-744A9F998B57</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D7C5E8DE-9100-473F-86E2-CF04F3D99F60</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A5F8CA84-B79D-4BC3-8DE9-146C61615B7E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -125,27 +149,53 @@ perl search_notes.pl $query 2&gt;&amp;1</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
+				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
 				<key>escaping</key>
 				<integer>102</integer>
+				<key>keyword</key>
+				<string>jt</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading results...</string>
 				<key>script</key>
-				<string>query=$1
+				<string>query=$*
 
-perl create_note.pl $query</string>
+perl search_notes.pl -t $query</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Joplin: Search Note Titles</string>
 				<key>type</key>
-				<integer>11</integer>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>305C4FC4-16E8-40CA-9742-E7CD7C269C37</string>
+			<string>37A8BF91-10EC-4879-88A2-976F4EE28959</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -167,6 +217,31 @@ perl create_note.pl $query</string>
 			<string>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+
+perl create_note.pl $parent_id $query</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>305C4FC4-16E8-40CA-9742-E7CD7C269C37</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -222,53 +297,41 @@ perl find_folder.pl $query 2&gt;&amp;1</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>jt</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading results...</string>
-				<key>script</key>
-				<string>query=$*
-
-perl search_notes.pl -t $query</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
 				<key>subtext</key>
 				<string></string>
-				<key>title</key>
-				<string>Joplin: Search Note Titles</string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>text</key>
+				<string>Enter New Note Name</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>37A8BF91-10EC-4879-88A2-976F4EE28959</string>
+			<string>7CFC5178-3B64-4F64-9927-744A9F998B57</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>parent_id</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>A5F8CA84-B79D-4BC3-8DE9-146C61615B7E</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -280,9 +343,9 @@ Report issues here: https://github.com/skeletonkey/joplin_alfred_workflow/issues
 		<key>305C4FC4-16E8-40CA-9742-E7CD7C269C37</key>
 		<dict>
 			<key>xpos</key>
-			<real>200</real>
+			<real>395</real>
 			<key>ypos</key>
-			<real>255</real>
+			<real>400</real>
 		</dict>
 		<key>37A8BF91-10EC-4879-88A2-976F4EE28959</key>
 		<dict>
@@ -292,7 +355,7 @@ This is an exact search on what Joplin considers words.</string>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>435</real>
+			<real>220</real>
 		</dict>
 		<key>49E47331-FA4F-4C25-BB08-BB344B51A6D7</key>
 		<dict>
@@ -303,21 +366,35 @@ This is an exact search on what Joplin considers words.</string>
 			<key>ypos</key>
 			<real>15</real>
 		</dict>
+		<key>7CFC5178-3B64-4F64-9927-744A9F998B57</key>
+		<dict>
+			<key>xpos</key>
+			<real>240</real>
+			<key>ypos</key>
+			<real>400</real>
+		</dict>
 		<key>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</key>
 		<dict>
 			<key>xpos</key>
-			<real>625</real>
+			<real>620</real>
 			<key>ypos</key>
-			<real>255</real>
+			<real>225</real>
+		</dict>
+		<key>A5F8CA84-B79D-4BC3-8DE9-146C61615B7E</key>
+		<dict>
+			<key>xpos</key>
+			<real>180</real>
+			<key>ypos</key>
+			<real>430</real>
 		</dict>
 		<key>D7C5E8DE-9100-473F-86E2-CF04F3D99F60</key>
 		<dict>
 			<key>note</key>
 			<string>Create New Note in specific folder.</string>
 			<key>xpos</key>
-			<real>30</real>
+			<real>35</real>
 			<key>ypos</key>
-			<real>255</real>
+			<real>400</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
