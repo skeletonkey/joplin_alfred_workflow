@@ -123,9 +123,7 @@
 				<key>runningsubtext</key>
 				<string>Loading results...</string>
 				<key>script</key>
-				<string>query=$*
-
-perl search_notes.pl $query 2&gt;&amp;1</string>
+				<string>perl search_notes.pl $* 2&gt;&amp;1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -174,9 +172,7 @@ perl search_notes.pl $query 2&gt;&amp;1</string>
 				<key>runningsubtext</key>
 				<string>Loading results...</string>
 				<key>script</key>
-				<string>query=$*
-
-perl search_notes.pl -t $query</string>
+				<string>perl search_notes.pl -t $*</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -226,9 +222,7 @@ perl search_notes.pl -t $query</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>query=$1
-
-perl create_note.pl $parent_id $query</string>
+				<string>perl create_note.pl $parent_id $1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -271,9 +265,7 @@ perl create_note.pl $parent_id $query</string>
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>query=$1
-
-perl find_folder.pl $query 2&gt;&amp;1</string>
+				<string>perl find_folder.pl $1 2&gt;&amp;1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
