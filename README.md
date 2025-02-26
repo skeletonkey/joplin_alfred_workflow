@@ -8,6 +8,10 @@ Alfred Workflow to interact with the Joplin API.
 - Perl 5
   - JSON module
 
+Perl 5 and Curl should be preinstalled on all Macs. The JSON module is provided by the workflow.
+
+Hence, there shouldn't be a need to install anything before using the workflow.
+
 ## Installation
 
 ### Workflow Installation
@@ -30,30 +34,6 @@ Web Clipper can be enabled by going to Joplin Preferences (Options) -> Web Clipp
 ![Joplin Clipper](https://github.com/skeletonkey/joplin_alfred_workflow/assets/1487600/59880df4-e59d-43d9-a27f-ecd1039e72ef)
 
 Note the Port that it is running on and copy your Authorization Token.
-
-### Curl
-
-```bash
-brew install curl
-```
-
-[Brew Install Insturctions](https://brew.sh/)
-
-### Perl
-
-Perl should already be installed on your Mac device.
-
-```bash
-brew install perl
-```
-
-[Brew Install Insturctions](https://brew.sh/)
-
-#### JSON Module
-
-```bash
-cpan install JSON
-```
 
 ## Usage
 
