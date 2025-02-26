@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.github/skeletonkey/joplin_alfred_workflow</string>
+	<string>com.github.skeletonkey.joplin_alfred_workflow</string>
 	<key>connections</key>
 	<dict>
 		<key>305C4FC4-16E8-40CA-9742-E7CD7C269C37</key>
