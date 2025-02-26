@@ -1,4 +1,4 @@
-#!/usr/bin/perl -I . -s
+#!/usr/bin/perl -I perl_modules -s
 
 use strict;
 use warnings;
