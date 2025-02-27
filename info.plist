@@ -336,7 +336,9 @@ The following commands are available:
 
 For these commands to work, the Joplin Web Clipper must be enabled, and the Joplin API token must be set in the workflow variables.
 
-Please reference the README.md file for more information: https://github.com/skeletonkey/joplin_alfred_workflow
+Web Clipper can be enabled by going to Joplin Preferences (Options) -&gt; Web Clipper and enabling the web clipper. Once enabled, an API token will be generated; alos note the Port the API is listening to. If a different Port is selected, it must be updated in the workflow variables.
+
+Please reference the README.md file for more detailed information: https://github.com/skeletonkey/joplin_alfred_workflow
 
 If there are any issues or enhancements, please create an issue here: https://github.com/skeletonkey/joplin_alfred_workflow/issues</string>
 	<key>uidata</key>
