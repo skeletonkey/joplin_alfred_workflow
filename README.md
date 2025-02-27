@@ -1,6 +1,6 @@
 # Joplin Alfred Workflow
 
-Alfred Workflow to interact with the Joplin API.
+An Alfred Workflow to interact with the Joplin API.
 
 ## Requirements
 
@@ -8,7 +8,7 @@ Alfred Workflow to interact with the Joplin API.
 - Perl 5
   - JSON module
 
-Perl 5 and Curl should be preinstalled on all Macs. The JSON module is provided by the workflow.
+Perl 5 and Curl should be preinstalled on all Macs. The workflow provides the JSON module.
 
 Hence, there shouldn't be a need to install anything before using the workflow.
 
@@ -20,7 +20,7 @@ Find the latest release on the right-hand side of the main [README](https://gith
 
 #### Workflow Configuration
 
-In Alfred, select the Joplin Workflow and open the Configuration Build (top right, it looks like '(x)').
+In Alfred, select the Joplin Workflow and open the Configuration Build (at the top right, it looks like '(x)').
 ![Configuration Build](https://github.com/skeletonkey/joplin_alfred_workflow/assets/1487600/650cb170-dd02-4f2b-ad9a-144d17e9e131)
 
 On the Environment Variables tab, provide your token for JOPLIN_TOKEN and ensure that JOPLIN_URL has the correct Port.
@@ -41,9 +41,9 @@ Note the Port that it is running on and copy your Authorization Token.
 
 #### jn _folder_
 
-Create a new note, in a specific folder with a specified name.
+Create a new note in a specific folder with a specified name.
 
-Type `jn` to select a folder, then enter the note title and press Enter to create it.
+Type `jn` to select a folder, enter the note title, and press Enter to create it.
 
 ### Search
 
@@ -53,7 +53,7 @@ Search all of Joplin for the string entered.
 
 _NOTE:_ Joplin search operates on 'Words'; therefore, partial strings may not return what you expect.
 
-_BUG_ currently, words separated with a space are treated as two tokens with an AND operation instead of one string.
+_BUG_ Currently, words separated with a space are treated as two tokens with an AND operation instead of one string.
 
 #### jt _search words_
 
