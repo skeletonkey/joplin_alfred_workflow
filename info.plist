@@ -327,9 +327,18 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Source Code: https://github.com/skeletonkey/joplin_alfred_workflow
+	<string>The Joplin Alfred Workflow enables interaction with Joplin via the API exposed by Joplin's Web Clipper.
 
-Report issues here: https://github.com/skeletonkey/joplin_alfred_workflow/issues</string>
+The following commands are available:
+- jn: Create a new note
+- js: Search Notes
+- jt: Search Note Titles
+
+For these commands to work, the Joplin Web Clipper must be enabled, and the Joplin API token must be set in the workflow variables.
+
+Please reference the README.md file for more information: https://github.com/skeletonkey/joplin_alfred_workflow
+
+If there are any issues or enhancements, please create an issue here: https://github.com/skeletonkey/joplin_alfred_workflow/issues</string>
 	<key>uidata</key>
 	<dict>
 		<key>305C4FC4-16E8-40CA-9742-E7CD7C269C37</key>
@@ -403,7 +412,7 @@ This is an exact search on what Joplin considers words.</string>
 		<string>JOPLIN_TOKEN</string>
 	</array>
 	<key>version</key>
-	<string>0.0.3</string>
+	<string>0.0.7</string>
 	<key>webaddress</key>
 	<string>https://github.com/skeletonkey/joplin_alfred_workflow</string>
 </dict>
