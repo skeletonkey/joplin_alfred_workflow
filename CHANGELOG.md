@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.0.7
+
+- general house keeping
+
+## 0.0.6
+
+- update jn to be able to specify the title of the new note
+
+## 0.0.5
+
+- title search (jt) added
+
+## 0.0.4
+
+- better error handling if Joplin is not reachable
+
 ## 0.0.3
 
 - CHANGELOG.md order change
