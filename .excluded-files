@@ -1,0 +1,8 @@
+.github/*
+.git/*
+.excluded-files
+CHANGELOG.md
+CODEOWNERS
+CONTRIBUTOR.md
+Makefile
+README.md
