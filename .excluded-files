@@ -1,0 +1,9 @@
+.excluded-files
+.git/*
+.github/*
+.gitignore
+CHANGELOG.md
+CODEOWNERS
+CONTRIBUTOR.md
+Makefile
+README.md
