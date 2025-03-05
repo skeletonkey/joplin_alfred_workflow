@@ -111,7 +111,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>js</string>
+				<string>{var:search_kw}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -160,7 +160,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>jt</string>
+				<string>{var:title_search_kw}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -253,7 +253,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>jn</string>
+				<string>{var:new_note_kw}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -378,11 +378,11 @@ This is an exact search on what Joplin considers words.</string>
 		<key>49E47331-FA4F-4C25-BB08-BB344B51A6D7</key>
 		<dict>
 			<key>note</key>
-			<string>Please submit issues and feature requests at https://github.com/skeletonkey/joplin_alfred_workflow/issues</string>
+			<string>Search Notes</string>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>15</real>
+			<real>85</real>
 		</dict>
 		<key>7CFC5178-3B64-4F64-9927-744A9F998B57</key>
 		<dict>
@@ -458,6 +458,69 @@ This is an exact search on what Joplin considers words.</string>
 			<string>textfield</string>
 			<key>variable</key>
 			<string>JOPLIN_URL</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>jn</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keywork to initate creating a new note</string>
+			<key>label</key>
+			<string>Keywork Create Note</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>new_note_kw</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>js</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword used to initiate a general search</string>
+			<key>label</key>
+			<string>Keyword: General Search</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>search_kw</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>jt</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword used to initiate a search of note titles</string>
+			<key>label</key>
+			<string>Keyword Tile Search</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>title_search_kw</string>
 		</dict>
 	</array>
 	<key>version</key>
