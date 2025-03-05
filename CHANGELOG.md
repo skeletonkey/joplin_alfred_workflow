@@ -4,6 +4,8 @@
 
 - general house keeping
 - create configuration section to all user full control
+- add JSON module files; no need to install it
+- only package the required files (plus LICENSE) in the archive
 
 ## 0.0.6
 
