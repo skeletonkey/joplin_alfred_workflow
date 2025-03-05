@@ -3,6 +3,7 @@
 ## 0.0.7
 
 - general house keeping
+- create configuration section to all user full control
 
 ## 0.0.6
 
