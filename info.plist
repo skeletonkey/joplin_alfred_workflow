@@ -111,7 +111,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>js</string>
+				<string>{var:search_kw}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -160,7 +160,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>jt</string>
+				<string>{var:title_search_kw}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -253,7 +253,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>jn</string>
+				<string>{var:new_note_kw}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -327,20 +327,35 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>The Joplin Alfred Workflow enables interaction with Joplin via the API exposed by Joplin's Web Clipper.
+	<string># Joplin Alfred Workflow
 
-The following commands are available:
+The Joplin Alfred Workflow enables interaction with Joplin via the API exposed by Joplin's Web Clipper.
+
+## Commands
+
 - jn: Create a new note
 - js: Search Notes
 - jt: Search Note Titles
 
-For these commands to work, the Joplin Web Clipper must be enabled, and the Joplin API token must be set in the workflow variables.
+Keywords can be changed in the configuration.
 
-Web Clipper can be enabled by going to Joplin Preferences (Options) -&gt; Web Clipper and enabling the web clipper. Once enabled, an API token will be generated; also note the Port the API is listening on. If a different Port is selected, it must be updated in the workflow variables.
+## Web Clipper
+
+The Joplin Web Clipper must be enabled for these commands to work, and the Joplin API token must be properly configured.
+
+### Configuration
+
+Web Clipper can be enabled by going to Joplin Preferences (Settings) -&gt; Web Clipper.
+
+Once enabled, an API token will be generated; copy and paste it into the "Web Clipper Authorization Token" field.
+
+Also, note the Port the API started on. Ensure it is the same as the default in the "URL/Port of Joplin's API" field.
+
+## Resources
 
 Please reference the README.md file for more detailed information: https://github.com/skeletonkey/joplin_alfred_workflow
 
-If there are any issues or enhancements, please create an issue here: https://github.com/skeletonkey/joplin_alfred_workflow/issues</string>
+If there are any issues or enhancements, please create a "Github Issue" here: https://github.com/skeletonkey/joplin_alfred_workflow/issues</string>
 	<key>uidata</key>
 	<dict>
 		<key>305C4FC4-16E8-40CA-9742-E7CD7C269C37</key>
@@ -363,11 +378,11 @@ This is an exact search on what Joplin considers words.</string>
 		<key>49E47331-FA4F-4C25-BB08-BB344B51A6D7</key>
 		<dict>
 			<key>note</key>
-			<string>Please submit issues and feature requests at https://github.com/skeletonkey/joplin_alfred_workflow/issues</string>
+			<string>Search Notes</string>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>15</real>
+			<real>85</real>
 		</dict>
 		<key>7CFC5178-3B64-4F64-9927-744A9F998B57</key>
 		<dict>
@@ -401,17 +416,112 @@ This is an exact search on what Joplin considers words.</string>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
-	<array/>
-	<key>variables</key>
-	<dict>
-		<key>JOPLIN_TOKEN</key>
-		<string></string>
-		<key>JOPLIN_URL</key>
-		<string>http://localhost:41184</string>
-	</dict>
-	<key>variablesdontexport</key>
 	<array>
-		<string>JOPLIN_TOKEN</string>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>Copy token here</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Token will be genereated when the Web Clipper is enabled.</string>
+			<key>label</key>
+			<string>Web Clipper Authorization Token</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>JOPLIN_TOKEN</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>http://localhost:41184</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>The full URL with Port of Joplin Web Clipper is started on.</string>
+			<key>label</key>
+			<string>URL/Port of Joplin's API</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>JOPLIN_URL</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>jn</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keywork to initate creating a new note</string>
+			<key>label</key>
+			<string>Keywork Create Note</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>new_note_kw</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>js</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword used to initiate a general search</string>
+			<key>label</key>
+			<string>Keyword: General Search</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>search_kw</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>jt</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword used to initiate a search of note titles</string>
+			<key>label</key>
+			<string>Keyword Tile Search</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>title_search_kw</string>
+		</dict>
 	</array>
 	<key>version</key>
 	<string>0.0.7</string>

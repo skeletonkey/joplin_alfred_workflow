@@ -1,3 +1,4 @@
+*.DS_Store
 .excluded-files
 .git/*
 .github/*
@@ -7,3 +8,4 @@ CODEOWNERS
 CONTRIBUTOR.md
 Makefile
 README.md
+prefs.plist
