@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.8
+
+- encode Alfred filter output as proper JSON
+- create a release with the alfredworkflow archive when the version changes on main
+
 ## 0.0.7
 
 - general house keeping
