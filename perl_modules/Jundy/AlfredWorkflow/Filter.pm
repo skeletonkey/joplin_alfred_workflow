@@ -1,6 +1,6 @@
 package Jundy::AlfredWorkflow::Filter;
 
-my $_filter_tmpl = '"title":"%s","subtitle":"%s","arg":"%s"';
+use JSON;
 
 # display prints out what Alfred is expecting for the filtered list
 # INPUT:
@@ -20,12 +20,25 @@ my $_filter_tmpl = '"title":"%s","subtitle":"%s","arg":"%s"';
 sub display {
     my $href = shift;
 
+    my @items;
     if (@{$href->{data}}) {
-        print '{"items":[{' . join('},{', map({ sprintf($_filter_tmpl, $_->{"title"},$_->{"subtitle"},$_->{"arg"} || "") } @{$href->{data}})) . '}]}';
+        @items = map {
+            {
+                title    => $_->{title}    // '',
+                subtitle => $_->{subtitle} // '',
+                arg      => $_->{arg}      // '',
+            }
+        } @{$href->{data}};
     }
     else {
-        print '{"items":[{' . sprintf($_filter_tmpl, $href->{empty}{"title"},$href->{empty}{"subtitle"},$href->{empty}{"arg"} || "") . '}]}';
+        @items = ({
+            title    => $href->{empty}{title}    // '',
+            subtitle => $href->{empty}{subtitle} // '',
+            arg      => $href->{empty}{arg}      // '',
+        });
     }
+
+    print encode_json({ items => \@items });
 }
 
 1;
