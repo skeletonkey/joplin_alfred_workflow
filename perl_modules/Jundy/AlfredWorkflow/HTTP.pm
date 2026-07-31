@@ -1,38 +1,22 @@
 package Jundy::AlfredWorkflow::HTTP;
 
-my %_url_translation = (
-    ' ' => '%20',
-    '!' => '%21',
-    '"' => '%22',
-    '#' => '%23',
-    '$' => '%24',
-    '%' => '%25',
-    '&' => '%26',
-    "'" => '%27',
-    '(' => '%28',
-    ')' => '%29',
-    '*' => '%2A',
-    '+' => '%2B',
-    ',' => '%2C',
-    '/' => '%2F',
-    ':' => '%3A',
-    ';' => '%3B',
-    '=' => '%3D',
-    '?' => '%3F',
-    '@' => '%40',
-    '[' => '%5B',
-    ']' => '%5D',
-);
+use strict;
+use warnings;
+
+# url_encode percent encodes everything outside RFC 3986's unreserved set.
+# Encoding by exception rather than from a table of known characters means new
+# punctuation - and anything non-ASCII - cannot slip through unencoded.
 sub url_encode {
-    return join("",
-        map({
-            if (exists $_url_translation{$_}) {
-                $_url_translation{$_};
-            } else {
-                $_;
-            }
-        } split(//, $_[0]))
-    )
+    my $value = shift;
+    return '' unless defined $value;
+
+    # Percent encoding is defined over bytes, so a decoded string has to be run
+    # back through UTF-8 first.
+    utf8::encode($value) if utf8::is_utf8($value);
+
+    $value =~ s/([^A-Za-z0-9\-._~])/sprintf('%%%02X', ord($1))/ge;
+
+    return $value;
 }
 
 1;

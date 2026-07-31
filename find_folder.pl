@@ -3,8 +3,14 @@
 use strict;
 use warnings;
 
+use Encode qw(decode_utf8);
+
 use Joplin;
 use Jundy::AlfredWorkflow::Filter;
+
+# Alfred hands arguments over as UTF-8 bytes.  Decode them here so that
+# everything downstream works in characters and accented folders match.
+@ARGV = map { decode_utf8($_) } @ARGV;
 
 my $find = join(' ', @ARGV);
 
@@ -38,8 +44,6 @@ sub get_folders {
     my $data = Joplin::get_data(["folders"]);
 
     if (exists $data->{error}) {
-        my @lines = split(/\n/, $data->{error});
-        $lines[0] =~ s/"/'/g;
         return {}, Joplin::parse_error($data);
     }
 
@@ -52,7 +56,9 @@ sub get_folders {
     }
 
     foreach my $id (keys %folders) {
-        if ($folders{$id}{title} !~ /$filter/i) {
+        # \Q so that punctuation in the filter is matched literally instead of
+        # being compiled as a pattern
+        if ($folders{$id}{title} !~ /\Q$filter\E/i) {
             delete $folders{$id};
         }
     }

@@ -5,6 +5,12 @@
 - self update: check GitHub releases in the background and offer the new version as a search result
 - `ju` keyword to check for a new version on demand
 - configuration to disable the automatic check or change how often it runs
+- call curl directly instead of through a shell; a search containing a backtick used to be run as a command
+- percent encode the whole query rather than a fixed list of characters
+- creating a note whose title contains an apostrophe no longer fails
+- accented and emoji characters survive searching and note creation
+- searching for punctuation such as `(` no longer breaks the result list
+- search results show when the note was last updated instead of an empty subtitle
 
 ## 0.0.8
 
