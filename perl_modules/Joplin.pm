@@ -46,9 +46,11 @@ sub _url {
     my $url = join('/', $ENV{JOPLIN_URL} // '', @$url_parts);
 
     if (%$query_map) {
+        # Sorted so that the same request always produces the same URL, which
+        # makes both debugging and testing possible.
         $url .= '?' . join('&',
             map { Jundy::AlfredWorkflow::HTTP::url_encode($_) . '=' . Jundy::AlfredWorkflow::HTTP::url_encode($query_map->{$_}) }
-            keys %$query_map);
+            sort keys %$query_map);
     }
 
     return $url;

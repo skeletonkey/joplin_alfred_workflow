@@ -11,6 +11,9 @@
 - accented and emoji characters survive searching and note creation
 - searching for punctuation such as `(` no longer breaks the result list
 - search results show when the note was last updated instead of an empty subtitle
+- accented searches are encoded as UTF-8 rather than as a single latin-1 byte
+- the background update check runs the refresh instead of quietly building a result list
+- test suite, run on every pull request; `make test` and `make coverage`
 
 ## 0.0.8
 

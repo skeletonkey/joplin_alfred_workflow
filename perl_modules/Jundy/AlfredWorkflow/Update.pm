@@ -105,7 +105,10 @@ sub check_in_background {
     $cache->{checked} = time();
     _write_cache($cache);
 
-    system('nohup ' . _shell_quote($^X) . ' -I perl_modules update.pl -refresh >/dev/null 2>&1 &');
+    # No switches of our own on this command line.  Perl only honours the
+    # switches on a script's #! line when it was started without any, and
+    # update.pl needs the -s there to see -refresh as a switch.
+    system('nohup ' . _shell_quote($^X) . ' update.pl -refresh >/dev/null 2>&1 &');
 
     return 1;
 }

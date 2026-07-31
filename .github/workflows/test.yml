@@ -1,0 +1,48 @@
+name: test
+run-name: Tests for ${{ github.ref_name }}
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  # Also on main so that a direct push cannot reach the release job untested.
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    # macOS so the tests run against the same perl the workflow will use.
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@main
+
+    - name: Show perl version
+      run: /usr/bin/perl --version
+
+    - name: Run tests
+      run: make test
+
+  coverage:
+    name: Coverage
+    runs-on: macos-latest
+    # Reported for information; a coverage dip does not block a pull request.
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@main
+
+    - name: Install Devel::Cover
+      run: |
+        curl -sL https://cpanmin.us | sudo /usr/bin/perl - --notest --sudo Devel::Cover
+
+    - name: Report coverage
+      run: make coverage | tee coverage.txt
+
+    - name: Publish to the job summary
+      if: always()
+      run: |
+        {
+          echo '## Coverage'
+          echo '```'
+          cat coverage.txt 2>/dev/null || echo 'coverage did not run'
+          echo '```'
+        } >> "$GITHUB_STEP_SUMMARY"
