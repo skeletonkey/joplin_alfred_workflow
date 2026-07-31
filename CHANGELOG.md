@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.9
+
+- self update: check GitHub releases in the background and offer the new version as a search result
+- `ju` keyword to check for a new version on demand
+- configuration to disable the automatic check or change how often it runs
+
 ## 0.0.8
 
 - encode Alfred filter output as proper JSON

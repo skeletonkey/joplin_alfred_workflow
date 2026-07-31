@@ -6,8 +6,11 @@ use vars qw($t);
 
 use Joplin;
 use Jundy::AlfredWorkflow::Filter;
+use Jundy::AlfredWorkflow::Update;
 
 $t ||= 0; # search titles only
+
+Jundy::AlfredWorkflow::Update::check_in_background();
 
 my $find = join(' ', @ARGV);
 
@@ -17,8 +20,9 @@ my $data = Joplin::get_data(
 );
 
 my %display_data = (
-    data  => [],
-    empty => { title => "No notes found", subtitle => "Please try a different search" },
+    data   => [],
+    empty  => { title => "No notes found", subtitle => "Please try a different search" },
+    append => [ Jundy::AlfredWorkflow::Update::notice_item() ],
 );
 if (exists $data->{items} && @{$data->{items}}) {
     my @items = @{$data->{items}};

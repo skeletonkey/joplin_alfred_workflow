@@ -23,7 +23,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</string>
+				<string>82C26F27-2A60-464D-8761-FD19B6C858C3</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -36,7 +36,20 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</string>
+				<string>82C26F27-2A60-464D-8761-FD19B6C858C3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>74EF0FAC-0CC2-4622-94B0-E6F48C2C2B96</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>645B5968-918D-4DF5-A6EF-C023429727BE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -50,6 +63,44 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>305C4FC4-16E8-40CA-9742-E7CD7C269C37</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>82C26F27-2A60-464D-8761-FD19B6C858C3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>74EF0FAC-0CC2-4622-94B0-E6F48C2C2B96</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>CD81DDAE-A54B-494B-A1D7-FF84D18B8FBB</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>91731034-B804-4193-ACF0-926BD335D3DD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>82C26F27-2A60-464D-8761-FD19B6C858C3</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -325,6 +376,131 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:joplin_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>update</string>
+						<key>outputlabel</key>
+						<string>Install Update</string>
+						<key>uid</key>
+						<string>CD81DDAE-A54B-494B-A1D7-FF84D18B8FBB</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>Open Note</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>82C26F27-2A60-464D-8761-FD19B6C858C3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>perl update.pl -install "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>74EF0FAC-0CC2-4622-94B0-E6F48C2C2B96</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Joplin Workflow</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>645B5968-918D-4DF5-A6EF-C023429727BE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>{var:update_kw}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Checking GitHub for a newer release...</string>
+				<key>script</key>
+				<string>perl update.pl 2&gt;&amp;1</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Check GitHub for a newer version of this workflow</string>
+				<key>title</key>
+				<string>Joplin: Check for Workflow Update</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>91731034-B804-4193-ACF0-926BD335D3DD</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string># Joplin Alfred Workflow
@@ -336,8 +512,15 @@ The Joplin Alfred Workflow enables interaction with Joplin via the API exposed b
 - jn: Create a new note
 - js: Search Notes
 - jt: Search Note Titles
+- ju: Check for a new version of this workflow
 
 Keywords can be changed in the configuration.
+
+## Updates
+
+The workflow checks GitHub once a day for a newer release. When one is found, an extra "Joplin Workflow x.y.z is available" result is added to the end of the search results; action it to download and install the update. Use the "ju" keyword to check immediately.
+
+Automatic checking can be turned off in the configuration.
 
 ## Web Clipper
 
@@ -361,9 +544,9 @@ If there are any issues or enhancements, please create a "Github Issue" here: ht
 		<key>305C4FC4-16E8-40CA-9742-E7CD7C269C37</key>
 		<dict>
 			<key>xpos</key>
-			<real>395</real>
+			<real>395.0</real>
 			<key>ypos</key>
-			<real>400</real>
+			<real>400.0</real>
 		</dict>
 		<key>37A8BF91-10EC-4879-88A2-976F4EE28959</key>
 		<dict>
@@ -371,48 +554,80 @@ If there are any issues or enhancements, please create a "Github Issue" here: ht
 			<string>Search Note Titles
 This is an exact search on what Joplin considers words.</string>
 			<key>xpos</key>
-			<real>30</real>
+			<real>30.0</real>
 			<key>ypos</key>
-			<real>220</real>
+			<real>220.0</real>
 		</dict>
 		<key>49E47331-FA4F-4C25-BB08-BB344B51A6D7</key>
 		<dict>
 			<key>note</key>
 			<string>Search Notes</string>
 			<key>xpos</key>
-			<real>30</real>
+			<real>30.0</real>
 			<key>ypos</key>
-			<real>85</real>
+			<real>85.0</real>
+		</dict>
+		<key>645B5968-918D-4DF5-A6EF-C023429727BE</key>
+		<dict>
+			<key>xpos</key>
+			<real>800.0</real>
+			<key>ypos</key>
+			<real>40.0</real>
+		</dict>
+		<key>74EF0FAC-0CC2-4622-94B0-E6F48C2C2B96</key>
+		<dict>
+			<key>xpos</key>
+			<real>620.0</real>
+			<key>ypos</key>
+			<real>40.0</real>
 		</dict>
 		<key>7CFC5178-3B64-4F64-9927-744A9F998B57</key>
 		<dict>
 			<key>xpos</key>
-			<real>240</real>
+			<real>240.0</real>
 			<key>ypos</key>
-			<real>400</real>
+			<real>400.0</real>
 		</dict>
 		<key>7ECD89F0-69D5-4743-AAF9-E0C2751C5A6E</key>
 		<dict>
 			<key>xpos</key>
-			<real>620</real>
+			<real>620.0</real>
 			<key>ypos</key>
-			<real>225</real>
+			<real>225.0</real>
+		</dict>
+		<key>82C26F27-2A60-464D-8761-FD19B6C858C3</key>
+		<dict>
+			<key>note</key>
+			<string>Route the update notice to the installer.</string>
+			<key>xpos</key>
+			<real>335.0</real>
+			<key>ypos</key>
+			<real>105.0</real>
+		</dict>
+		<key>91731034-B804-4193-ACF0-926BD335D3DD</key>
+		<dict>
+			<key>note</key>
+			<string>Check for a new release of this workflow.</string>
+			<key>xpos</key>
+			<real>30.0</real>
+			<key>ypos</key>
+			<real>570.0</real>
 		</dict>
 		<key>A5F8CA84-B79D-4BC3-8DE9-146C61615B7E</key>
 		<dict>
 			<key>xpos</key>
-			<real>180</real>
+			<real>180.0</real>
 			<key>ypos</key>
-			<real>430</real>
+			<real>430.0</real>
 		</dict>
 		<key>D7C5E8DE-9100-473F-86E2-CF04F3D99F60</key>
 		<dict>
 			<key>note</key>
 			<string>Create New Note in specific folder.</string>
 			<key>xpos</key>
-			<real>35</real>
+			<real>35.0</real>
 			<key>ypos</key>
-			<real>400</real>
+			<real>400.0</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -522,9 +737,70 @@ This is an exact search on what Joplin considers words.</string>
 			<key>variable</key>
 			<string>title_search_kw</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>ju</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword used to check GitHub for a newer version of this workflow</string>
+			<key>label</key>
+			<string>Keyword: Check for Workflow Update</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>update_kw</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Check GitHub for new releases</string>
+			</dict>
+			<key>description</key>
+			<string>When enabled, searches quietly check for a newer version of this workflow in the background and offer it as the last result.</string>
+			<key>label</key>
+			<string>Automatic Update Check</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>JOPLIN_UPDATE_CHECK</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>1</string>
+				<key>placeholder</key>
+				<string>1</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Number of days to wait between automatic update checks.</string>
+			<key>label</key>
+			<string>Update Check Frequency (days)</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>JOPLIN_UPDATE_FREQUENCY</string>
+		</dict>
 	</array>
 	<key>version</key>
-	<string>0.0.8</string>
+	<string>0.0.9</string>
 	<key>webaddress</key>
 	<string>https://github.com/skeletonkey/joplin_alfred_workflow</string>
 </dict>
