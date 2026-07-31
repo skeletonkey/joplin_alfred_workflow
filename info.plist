@@ -769,9 +769,9 @@ This is an exact search on what Joplin considers words.</string>
 				<string>Check GitHub for new releases</string>
 			</dict>
 			<key>description</key>
-			<string>When enabled, searches quietly check for a newer version of this workflow in the background and offer it as the last result.</string>
+			<string>Adds a result to the end of a search when a newer version of this workflow is available. Nothing is downloaded or installed until you select that result.</string>
 			<key>label</key>
-			<string>Automatic Update Check</string>
+			<string>Notify About New Versions</string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>

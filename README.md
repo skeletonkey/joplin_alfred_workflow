@@ -71,7 +71,8 @@ Check for a new version immediately rather than waiting for the daily check.
 
 ### Configuration
 
-- **Automatic Update Check** - turn the daily background check off. `ju` keeps working either way.
+- **Notify About New Versions** - turn the daily background check off. `ju` keeps working either way.
+  The check only adds a result; nothing is downloaded or installed until you select it.
 - **Update Check Frequency (days)** - how long to wait between automatic checks. Defaults to 1.
 
 Only releases that are not pre-releases and that carry exactly one `.alfredworkflow` file are considered.
