@@ -3,8 +3,6 @@ package Jundy::AlfredWorkflow::Update;
 use strict;
 use warnings;
 
-use File::Path qw(make_path);
-
 use JSON;
 
 # Self updating, modelled on the mechanism documented at
@@ -207,7 +205,12 @@ sub _cache_dir {
         $dir = "$ENV{HOME}/Library/Caches/com.runningwithcrayons.Alfred/Workflow Data/$bundle_id";
     }
 
-    eval { make_path($dir) } unless -d $dir;
+    unless (-d $dir) {
+        # Alfred makes this directory itself, so File::Path is only loaded on
+        # the rare occasion that it is missing.
+        require File::Path;
+        eval { File::Path::make_path($dir) };
+    }
 
     return $dir;
 }

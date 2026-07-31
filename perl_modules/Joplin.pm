@@ -3,8 +3,6 @@ package Joplin;
 use strict;
 use warnings;
 
-use IPC::Open2;
-
 use JSON;
 
 use Jundy::AlfredWorkflow::HTTP;
@@ -56,22 +54,46 @@ sub _url {
     return $url;
 }
 
-# _curl runs curl directly rather than through a shell, so nothing a search
-# term or a note title happens to contain can be read as shell syntax.  A body
-# is sent on stdin, which also keeps long notes off the command line.
+# Both of these run curl directly rather than through a shell, so nothing a
+# search term or a note title happens to contain can be read as shell syntax.
 sub _curl {
     my $url  = shift;
     my $body = shift;
 
-    my @command = ('curl', '-s', '-q', $url);
-    if (defined $body) {
-        splice(@command, 1, 0, '-X', 'POST', '-H', 'Content-Type: application/json', '--data-binary', '@-');
-    }
+    return defined $body ? _post($url, $body) : _get($url);
+}
+
+sub _get {
+    my $url = shift;
+
+    open(my $reader, '-|', 'curl', '-s', '-q', $url) or return '';
+
+    local $/;
+    my $response = <$reader>;
+    close($reader);
+
+    return $response;
+}
+
+# Writing to curl as well as reading from it needs IPC::Open2.  Only note
+# creation does that, so keep it off the search path, which runs on every
+# keystroke.  Sending the body on stdin also keeps long notes off the command
+# line.
+sub _post {
+    my $url  = shift;
+    my $body = shift;
+
+    require IPC::Open2;
 
     my ($reader, $writer);
-    my $pid = eval { open2($reader, $writer, @command) } or return '';
+    my $pid = eval {
+        IPC::Open2::open2(
+            $reader, $writer,
+            'curl', '-X', 'POST', '-s', '-q', '-H', 'Content-Type: application/json', '--data-binary', '@-', $url
+        )
+    } or return '';
 
-    print $writer $body if defined $body;
+    print $writer $body;
     close($writer);
 
     local $/;

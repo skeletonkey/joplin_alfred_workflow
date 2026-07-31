@@ -4,8 +4,6 @@ use strict;
 use warnings;
 use vars qw($t);
 
-use Encode qw(decode_utf8);
-
 use Joplin;
 use Jundy::AlfredWorkflow::Filter;
 use Jundy::AlfredWorkflow::Update;
@@ -14,7 +12,8 @@ $t ||= 0; # search titles only
 
 # Alfred hands arguments over as UTF-8 bytes.  Decode them here so that
 # everything downstream works in characters and accented searches match.
-@ARGV = map { decode_utf8($_) } @ARGV;
+# utf8::decode is built into the interpreter, so this loads no module.
+utf8::decode($_) for @ARGV;
 
 Jundy::AlfredWorkflow::Update::check_in_background();
 

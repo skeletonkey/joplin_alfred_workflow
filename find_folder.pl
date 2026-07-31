@@ -3,14 +3,13 @@
 use strict;
 use warnings;
 
-use Encode qw(decode_utf8);
-
 use Joplin;
 use Jundy::AlfredWorkflow::Filter;
 
 # Alfred hands arguments over as UTF-8 bytes.  Decode them here so that
 # everything downstream works in characters and accented folders match.
-@ARGV = map { decode_utf8($_) } @ARGV;
+# utf8::decode is built into the interpreter, so this loads no module.
+utf8::decode($_) for @ARGV;
 
 my $find = join(' ', @ARGV);
 
