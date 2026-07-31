@@ -27,5 +27,17 @@ coverage:
 		$(PROVE) --exec '$(PERL) -Iperl_modules -It/lib' -r t
 	$(PERL) -S cover -report text -silent $(COVER_DB)
 
+coverage-html:
+	@$(PERL) -MDevel::Cover -e1 2>/dev/null || { \
+		echo "Devel::Cover is not installed."; \
+		echo "  cpan Devel::Cover      # or: cpanm Devel::Cover"; \
+		exit 1; \
+	}
+	rm -rf $(COVER_DB)
+	PERL5OPT="-MDevel::Cover=-db,$(COVER_DB),-silent,1,+ignore,^t/,+ignore,^/usr/,+ignore,perl_modules/JSON" \
+		$(PROVE) --exec '$(PERL) -Iperl_modules -It/lib' -r t
+	$(PERL) -S cover -report html -silent $(COVER_DB)
+	open $(COVER_DB)/coverage.html
+
 clean:
 	rm -rf $(COVER_DB) joplin.alfredworkflow
