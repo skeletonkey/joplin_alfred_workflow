@@ -1,38 +1,28 @@
 package Jundy::AlfredWorkflow::HTTP;
 
-my %_url_translation = (
-    ' ' => '%20',
-    '!' => '%21',
-    '"' => '%22',
-    '#' => '%23',
-    '$' => '%24',
-    '%' => '%25',
-    '&' => '%26',
-    "'" => '%27',
-    '(' => '%28',
-    ')' => '%29',
-    '*' => '%2A',
-    '+' => '%2B',
-    ',' => '%2C',
-    '/' => '%2F',
-    ':' => '%3A',
-    ';' => '%3B',
-    '=' => '%3D',
-    '?' => '%3F',
-    '@' => '%40',
-    '[' => '%5B',
-    ']' => '%5D',
-);
+use strict;
+use warnings;
+
+# url_encode percent encodes everything outside RFC 3986's unreserved set.
+# Encoding by exception rather than from a table of known characters means new
+# punctuation - and anything non-ASCII - cannot slip through unencoded.
+#
+# The argument is a string of characters, not of bytes; callers decode what
+# they read from Alfred before they get here.
 sub url_encode {
-    return join("",
-        map({
-            if (exists $_url_translation{$_}) {
-                $_url_translation{$_};
-            } else {
-                $_;
-            }
-        } split(//, $_[0]))
-    )
+    my $value = shift;
+    return '' unless defined $value;
+
+    # Percent encoding is defined over bytes, so characters have to be run
+    # through UTF-8 first.  This is unconditional on purpose: perl stores a
+    # string whose characters all fit in a byte without the UTF-8 flag set, so
+    # asking whether the flag is on would miss "café" and encode it as a
+    # single latin-1 byte.
+    utf8::encode($value);
+
+    $value =~ s/([^A-Za-z0-9\-._~])/sprintf('%%%02X', ord($1))/ge;
+
+    return $value;
 }
 
 1;

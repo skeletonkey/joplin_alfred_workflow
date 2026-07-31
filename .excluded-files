@@ -6,6 +6,9 @@
 CHANGELOG.md
 CODEOWNERS
 CONTRIBUTOR.md
+cover_db/*
+joplin.alfredworkflow
 Makefile
 README.md
+t/*
 prefs.plist

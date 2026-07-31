@@ -1,0 +1,42 @@
+#!/usr/bin/perl
+
+# Stands in for curl while the tests run.  It records how it was called and
+# replies with whatever the test asked for, so no test touches the network,
+# Joplin or GitHub.
+#
+# Driven by three environment variables:
+#   FAKE_CURL_DIR       directory to record calls in (required)
+#   FAKE_CURL_RESPONSE  text to print on stdout
+#   FAKE_CURL_EXIT      exit status to report
+
+use strict;
+use warnings;
+
+my $dir = $ENV{FAKE_CURL_DIR} or die "FAKE_CURL_DIR is not set\n";
+
+my $call = 1;
+$call++ while -e "$dir/call-$call.args";
+
+# One argument per line.  Arguments never contain a newline in this workflow,
+# and keeping it line based makes the recording easy to read when a test fails.
+_write("$dir/call-$call.args", join("\n", @ARGV));
+
+# curl only reads stdin when it has been told to send the body that way.
+if (grep { $_ eq '@-' } @ARGV) {
+    local $/;
+    my $body = <STDIN>;
+    _write("$dir/call-$call.body", defined $body ? $body : '');
+}
+
+print $ENV{FAKE_CURL_RESPONSE} if defined $ENV{FAKE_CURL_RESPONSE};
+
+exit($ENV{FAKE_CURL_EXIT} || 0);
+
+sub _write {
+    my ($path, $content) = @_;
+
+    open(my $fh, '>', $path) or die "cannot write $path: $!\n";
+    binmode($fh);
+    print $fh $content;
+    close($fh);
+}
