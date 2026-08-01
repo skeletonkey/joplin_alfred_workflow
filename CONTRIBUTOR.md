@@ -1,50 +1,47 @@
 # Joplin Alfred Workflow Contributor Guidelines
 
+## TL:DR
+
+- fork the [repo](https://github.com/skeletonkey/Jundy_AlfredWorkflow)
+- create a branch with your work
+- create PR against the [main](https://github.com/skeletonkey/joplin_alfred_workflow)
+
 ## Requirements
 
+Minimum requirements should be part of a basic Mac install and not require additional installations.
+
 - Curl
+- Local copy of your forked code of [Joplin Alfred Workflow](https://github.com/skeletonkey/Jundy_AlfredWorkflow)
 - Perl 5
-
-### Jundy::AlfredWorkflow
-
-[This repository](https://github.com/skeletonkey/Jundy_AlfredWorkflow) contains all reusable code. You will also want to fork it.
 
 ## Tests
 
-```
+New code should be tested or existing tests extended to cover edge cases.
+
+```sh
 make test
 ```
 
-`Test::More` and `prove` both ship with the Perl that Apple installs, so nothing needs installing first.
-The tests run every pull request.
+The suite never reaches the network, Joplin or GitHub: `t/bin/curl` shadows the real Curl on `PATH`, records how it was called and replies with whatever the test asked for. That is deliberate - most of the bugs worth catching here are about exactly what gets handed to Curl.
 
-The suite never reaches the network, Joplin or GitHub: `t/bin/curl` shadows the real Curl on `PATH`,
-records how it was called and replies with whatever the test asked for. That is deliberate - most of the
-bugs worth catching here are about exactly what gets handed to Curl.
-
-Tests run the scripts the same way Alfred does, from the workflow directory with no switches of their
-own. Perl only honours the `-I` and `-s` on a script's `#!` line when it is started that way, so adding
-switches to the command line quietly changes how the script parses its arguments.
+Tests run the scripts the same way Alfred does, from the workflow directory with no switches of their own. Perl only honours the `-I` and `-s` on a script's `#!` line when it is started that way, so adding switches to the command line quietly changes how the script parses its arguments.
 
 ### Coverage
 
-```
+Coverage reports requires [`Devel::Cover`](https://metacpan.org/pod/Devel::Cover), which is __NOT__ part of the default installation.
+
+```sh
 make coverage
+make coverage-html
 ```
 
-This one needs [`Devel::Cover`](https://metacpan.org/pod/Devel::Cover), which is not part of a default
-Perl:
-
-```
-cpan Devel::Cover
-```
-
-Coverage is reported on every pull request but is not a gate.
+Coverage is reported on every pull request create and update - even on Draft PRs. Output can be seen here:
 
 ## Packaging
 
-`make alfredworkflow` builds the archive. Anything that should not ship to users - the tests included -
-belongs in `.excluded-files`.
+`make alfredworkflow` builds the archive.
+
+Any new files that should not ship to users belong in `.excluded-files`.
 
 ## Contribute
 
