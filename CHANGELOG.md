@@ -6,6 +6,8 @@
   - technically a breaking change as the old behavior is by last changed in Ascending order
   - old behavior can be restored by updating settings
 - layout change to visually organize the workflow
+- update CONTRIBUTING.md
+- fix code coverage action
 
 ## 0.0.9
 

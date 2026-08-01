@@ -1,5 +1,7 @@
 PERL  ?= /usr/bin/perl
-PROVE ?= prove
+# Run prove under $(PERL) rather than whatever perl its shebang names, so that
+# coverage looks for Devel::Cover in the same perl the tests run under.
+PROVE ?= $(PERL) -S prove
 
 # Devel::Cover writes here and it needs clearing between runs.
 COVER_DB := cover_db
@@ -17,8 +19,8 @@ test:
 # Devel::Cover is not part of a default perl, so say so plainly rather than
 # failing with a module error.
 coverage:
-	@$(PERL) -MDevel::Cover -e1 2>/dev/null || { \
-		echo "Devel::Cover is not installed."; \
+	@$(PERL) -e 'exit 1 unless grep { -e "$$_/Devel/Cover.pm" } @INC' || { \
+		echo "Devel::Cover is not installed for $(PERL)."; \
 		echo "  cpan Devel::Cover      # or: cpanm Devel::Cover"; \
 		exit 1; \
 	}
@@ -28,8 +30,8 @@ coverage:
 	$(PERL) -S cover -report text -silent $(COVER_DB)
 
 coverage-html:
-	@$(PERL) -MDevel::Cover -e1 2>/dev/null || { \
-		echo "Devel::Cover is not installed."; \
+	@$(PERL) -e 'exit 1 unless grep { -e "$$_/Devel/Cover.pm" } @INC' || { \
+		echo "Devel::Cover is not installed for $(PERL)."; \
 		echo "  cpan Devel::Cover      # or: cpanm Devel::Cover"; \
 		exit 1; \
 	}
