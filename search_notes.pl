@@ -19,9 +19,20 @@ Jundy::AlfredWorkflow::Update::check_in_background();
 
 my $find = join(' ', @ARGV);
 
+my %filters = (
+    fields => 'id,title,updated_time',
+    query => $find,
+);
+
+if (exists $ENV{search_order_by} && $ENV{search_order_by} ne 'default') {
+    $filters{order_by} = $ENV{search_order_by};
+    $filters{order_dir} = $ENV{search_order_direction};
+}
+
+# print STDERR "testing";
 my $data = Joplin::get_data(
     ["search"],
-    { fields => 'id,title,updated_time', order_by => "updated_time", query => $find, }
+    \%filters
 );
 
 my %display_data = (
