@@ -35,7 +35,11 @@ jobs:
         curl -sL https://cpanmin.us | sudo /usr/bin/perl - --notest --sudo Devel::Cover
 
     - name: Report coverage
-      run: make coverage | tee coverage.txt
+      # pipefail so a failing make is not masked by tee's exit status.
+      shell: bash
+      run: |
+        set -o pipefail
+        make coverage | tee coverage.txt
 
     - name: Publish to the job summary
       if: always()
