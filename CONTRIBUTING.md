@@ -52,3 +52,10 @@ Any new files that should not ship to users belong in `.excluded-files`.
   - a code owner should review and provide feedback within a week of submittal/response
   - the PR author is required to response to all feedback within a month of it being provided
   - PRs not responded to within 2 months will be removed
+
+## Best Practices
+
+- For development right click the workflow and open it in a Terminal. There symbolically link the files that you are working on to the GitHub files.
+- Eat your own dog food:
+  - before submitting the PR build (`make alfredworkflow`) and install it
+  - Do you see the new version number? Does it still work that way you expected?
