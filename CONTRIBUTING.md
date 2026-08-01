@@ -35,7 +35,7 @@ make coverage
 make coverage-html
 ```
 
-Coverage is reported on every pull request create and update - even on Draft PRs. Coverage output can be see in the associated [action workflow](https://github.com/skeletonkey/joplin_alfred_workflow/actions) -> Coverage -> Report Coverage Step (don't scroll down too much, it's right at the top).
+Coverage is reported on every pull request create and update - even on Draft PRs. Coverage output can be see in the associated [action workflow](https://github.com/skeletonkey/joplin_alfred_workflow/actions) page in the 'Coverage summary' section. The cover table is at the top of the entire report.
 
 ## Packaging
 
