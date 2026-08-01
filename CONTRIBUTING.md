@@ -28,14 +28,14 @@ Tests run the scripts the same way Alfred does, from the workflow directory with
 
 ### Coverage
 
-Coverage reports requires [`Devel::Cover`](https://metacpan.org/pod/Devel::Cover), which is __NOT__ part of the default installation.
+Coverage reporting requires [`Devel::Cover`](https://metacpan.org/pod/Devel::Cover), which is __NOT__ part of the default installation.
 
 ```sh
 make coverage
 make coverage-html
 ```
 
-Coverage is reported on every pull request create and update - even on Draft PRs. Output can be seen here:
+Coverage is reported on every pull request create and update - even on Draft PRs. Coverage output can be see in the associated [action workflow](https://github.com/skeletonkey/joplin_alfred_workflow/actions) -> Coverage -> Report Coverage Step (don't scroll down too much, it's right at the top).
 
 ## Packaging
 
